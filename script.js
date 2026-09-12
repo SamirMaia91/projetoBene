@@ -6,140 +6,87 @@
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
-const setMenuState = (isOpen) => {
-
-    navLinks.classList.toggle("active", isOpen);
-    menuBtn.setAttribute("aria-expanded", String(isOpen));
-    menuBtn.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
-
-};
-
 if (menuBtn && navLinks) {
-
     menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
 
-        const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
-        setMenuState(!isOpen);
+        const isOpen = navLinks.classList.contains("active");
 
+        menuBtn.setAttribute("aria-expanded", isOpen);
     });
 
-    window.addEventListener("resize", () => {
+    // Fecha o menu ao clicar em um link
+    navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            menuBtn.setAttribute("aria-expanded", "false");
+        });
+    });
 
-        if (window.innerWidth > 900) {
-            setMenuState(false);
+    // Fecha o menu ao clicar fora
+    document.addEventListener("click", (event) => {
+        if (
+            !navLinks.contains(event.target) &&
+            !menuBtn.contains(event.target)
+        ) {
+            navLinks.classList.remove("active");
+            menuBtn.setAttribute("aria-expanded", "false");
         }
-
     });
-
 }
 
 
-// Fecha o menu depois de clicar em uma opção
+// =========================================
+// ANO AUTOMÁTICO NO FOOTER
+// =========================================
 
-const links = document.querySelectorAll(".nav-links a");
+const currentYear = document.getElementById("currentYear");
 
-links.forEach(link => {
+if (currentYear) {
+    currentYear.textContent = new Date().getFullYear();
+}
 
-    link.addEventListener("click", () => {
 
-        if (window.innerWidth <= 900) {
-            setMenuState(false);
+// =========================================
+// HEADER AO ROLAR A PÁGINA
+// =========================================
+
+const header = document.querySelector("header");
+
+if (header) {
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
         }
-
     });
-
-});
-
-
-// =========================================
-// ANO AUTOMÁTICO
-// =========================================
-
-const year = document.getElementById("year");
-
-year.textContent = new Date().getFullYear();
+}
 
 
 // =========================================
-// HEADER AO ROLAR
+// ANIMAÇÃO DOS ELEMENTOS AO APARECEREM
 // =========================================
-
-const header = document.getElementById("header");
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 40) {
-
-        header.style.boxShadow =
-            "0 5px 25px rgba(30, 45, 35, 0.08)";
-
-    } else {
-
-        header.style.boxShadow = "none";
-
-    }
-
-});
-
-
-// =========================================
-// ANIMAÇÃO DOS ELEMENTOS
-// =========================================
-
-const animatedElements = document.querySelectorAll(
-    ".service-card, .advantage, .section-content, .section-image, .period-content, .hero-content, .hero-image"
-);
 
 const observer = new IntersectionObserver(
     (entries) => {
-
-        entries.forEach(entry => {
-
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-
                 entry.target.classList.add("show");
-
                 observer.unobserve(entry.target);
-
             }
-
         });
-
     },
     {
-        threshold: 0.12
+        threshold: 0.15
     }
 );
 
+const animatedElements = document.querySelectorAll(
+    ".fade-up, .fade-in, .slide-left, .slide-right"
+);
 
-animatedElements.forEach(element => {
-
-    element.classList.add("hidden");
-
+animatedElements.forEach((element) => {
     observer.observe(element);
-
-});
-
-
-// =========================================
-// FECHAR MENU AO CLICAR FORA
-// =========================================
-
-document.addEventListener("click", (event) => {
-
-    if (!menuBtn || !navLinks) return;
-
-    const clickedInsideMenu =
-        navLinks.contains(event.target);
-
-    const clickedButton =
-        menuBtn.contains(event.target);
-
-    if (!clickedInsideMenu && !clickedButton && window.innerWidth <= 900) {
-
-        setMenuState(false);
-
-    }
-
 });
 ```
