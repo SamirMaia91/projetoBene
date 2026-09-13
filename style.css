@@ -11,16 +11,25 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 body {
+    width: 100%;
+    max-width: 100%;
     font-family: "DM Sans", sans-serif;
     color: #f4f4f4;
     background:
-        radial-gradient(circle at top left, rgba(255, 45, 57, 0.08), transparent 30%),
+        radial-gradient(circle at top left, rgba(255, 45, 57, 0.12), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255, 45, 57, 0.06), transparent 28%),
         linear-gradient(180deg, #080808 0%, #0d0d0d 100%);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+main {
+    overflow: hidden;
 }
 
 a {
@@ -28,8 +37,20 @@ a {
     color: inherit;
 }
 
+::selection {
+    background: rgba(255, 45, 57, 0.28);
+    color: white;
+}
+
 img {
     display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+svg,
+video,
+canvas {
     max-width: 100%;
 }
 
@@ -87,17 +108,24 @@ button {
     width: 100%;
     z-index: 1000;
 
-    background: rgba(8, 8, 8, 0.78);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(10, 10, 10, 0.82);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
     border-bottom: 1px solid rgba(255, 45, 57, 0.12);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 
-    transition: 0.3s;
+    transition: 0.3s ease;
+}
+
+.header.scrolled {
+    background: rgba(8, 8, 8, 0.94);
+    border-bottom-color: rgba(255, 45, 57, 0.2);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
 }
 
 .navbar {
-    max-width: 1200px;
+    max-width: 1220px;
     margin: auto;
 
     padding: 18px 25px;
@@ -113,14 +141,43 @@ button {
 ========================================= */
 
 .logo {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    gap: 8px;
+    line-height: 1;
+    white-space: nowrap;
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    transition: 0.25s ease;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 18px rgba(0,0,0,0.12);
 }
 
-.logo img {
-    width: 150px;
-    height: auto;
-    display: block;
+.logo:hover {
+    border-color: rgba(255, 45, 57, 0.25);
+    background: rgba(255, 45, 57, 0.04);
+}
+
+.logo .brand-name {
+    color: var(--white);
+    font-size: 0.98rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+.logo .brand-separator {
+    color: var(--red-bright);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.logo .brand-role {
+    color: var(--muted);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
 }
 
 
@@ -174,13 +231,23 @@ button {
 .menu-btn {
     display: none;
 
-    background: none;
-    border: none;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    width: 42px;
+    height: 42px;
+    padding: 0;
 
-    font-size: 28px;
+    font-size: 24px;
     cursor: pointer;
 
     color: white;
+    transition: 0.25s ease;
+}
+
+.menu-btn:hover {
+    border-color: rgba(255, 45, 57, 0.45);
+    background: rgba(255, 45, 57, 0.08);
 }
 
 
@@ -207,6 +274,7 @@ button {
     gap: 70px;
 
     overflow: hidden;
+    isolation: isolate;
 }
 
 
@@ -261,6 +329,9 @@ button {
 
 .hero-content {
     max-width: 610px;
+    padding-right: 12px;
+    position: relative;
+    z-index: 2;
 }
 
 .tag,
@@ -279,6 +350,7 @@ button {
     margin-bottom: 18px;
 
     text-transform: uppercase;
+    opacity: 0.96;
 }
 
 .tag::before,
@@ -303,12 +375,13 @@ button {
 
     font-size: clamp(46px, 5vw, 72px);
 
-    line-height: 0.97;
+    line-height: 0.96;
 
     margin-bottom: 25px;
 
     color: var(--white);
     letter-spacing: -1.5px;
+    text-wrap: balance;
 }
 
 .hero h1 span {
@@ -327,9 +400,10 @@ button {
 .hero-description {
     max-width: 550px;
 
-    color: var(--muted-light);
+    color: rgba(241, 239, 233, 0.9);
 
     font-size: 18px;
+    letter-spacing: -0.01em;
 
     margin-bottom: 32px;
 }
@@ -355,10 +429,11 @@ button {
 
     padding: 15px 27px;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
     font-size: 14px;
     font-weight: 800;
+    letter-spacing: 0.02em;
 
     transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 
@@ -373,14 +448,15 @@ button {
 
     background: linear-gradient(
         135deg,
-        var(--red-bright),
+        #ff4a54,
         var(--red)
     );
 
     border: 1px solid rgba(255, 255, 255, 0.15);
 
     box-shadow:
-        0 12px 30px rgba(255, 45, 57, 0.28);
+        0 12px 30px rgba(255, 45, 57, 0.28),
+        inset 0 1px 0 rgba(255,255,255,0.15);
 }
 
 .btn-primary:hover {
@@ -396,6 +472,10 @@ button {
         0 18px 42px rgba(255, 45, 57, 0.38);
 }
 
+.btn:hover {
+    transform: translateY(-2px);
+}
+
 
 /* BOTÃO OUTLINE */
 
@@ -404,7 +484,8 @@ button {
 
     border: 1px solid rgba(229, 9, 20, 0.65);
 
-    background: transparent;
+    background: rgba(255, 255, 255, 0.015);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
 }
 
 .btn-outline:hover {
@@ -490,7 +571,8 @@ button {
 
     box-shadow:
         0 30px 75px rgba(0, 0, 0, 0.65),
-        0 0 45px rgba(255, 45, 57, 0.12);
+        0 0 45px rgba(255, 45, 57, 0.12),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 .image-placeholder img {
@@ -551,17 +633,17 @@ button {
     bottom: 35px;
     left: -25px;
 
-    background: rgba(20, 20, 20, 0.96);
+    background: linear-gradient(180deg, rgba(20,20,20,0.98), rgba(18,18,18,0.92));
 
     padding: 18px 22px;
 
-    border-radius: 10px;
+    border-radius: 14px;
 
-    border: 1px solid rgba(229, 9, 20, 0.35);
+    border: 1px solid rgba(229, 9, 20, 0.4);
 
-    border-left: 3px solid var(--red);
+    border-left: 4px solid var(--red);
 
-    box-shadow: var(--shadow);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
 
     display: flex;
 
@@ -593,6 +675,7 @@ button {
     margin: auto;
 
     padding: 110px 25px;
+    position: relative;
 }
 
 .section-heading {
@@ -626,7 +709,7 @@ button {
 }
 
 .section-heading p {
-    color: var(--muted);
+    color: rgba(167, 162, 157, 0.92);
 }
 
 
@@ -662,36 +745,54 @@ button {
     width: 350px;
     height: 430px;
 
-    border-radius: 20px;
+    border-radius: 22px;
 
-    background: #111;
+    background: linear-gradient(180deg, rgba(17, 17, 17, 1), rgba(14, 14, 14, 1));
 
-    border: 2px solid rgba(229, 9, 20, 0.35);
+    border: 1px solid rgba(229, 9, 20, 0.28);
 
     overflow: hidden;
 
     box-shadow:
         0 20px 50px rgba(0, 0, 0, 0.45),
         0 0 35px rgba(229, 9, 20, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.about-placeholder::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    pointer-events: none;
 }
 
 .about-placeholder img {
-    width: 100%;
-    height: 100%;
+    width: 88%;
+    height: 88%;
 
     display: block;
 
-    object-fit: cover;
+    object-fit: contain;
 
-    object-position: center 25%;
+    object-position: center center;
 
     position: relative;
+    left: 0;
+    top: 0;
 
     z-index: 1;
 
     border-radius: 18px;
 
+    background: transparent;
+
     transition: transform 0.5s ease;
+    filter: saturate(0.85) contrast(1.1) brightness(1.02);
 }
 
 .about-placeholder:hover img {
@@ -704,7 +805,7 @@ button {
 ========================================= */
 
 .section-content p {
-    color: var(--muted);
+    color: rgba(167, 162, 157, 0.92);
 
     margin-bottom: 18px;
 }
@@ -727,9 +828,10 @@ button {
 
     border-left: 3px solid var(--red);
 
-    background: rgba(229, 9, 20, 0.07);
+    background: linear-gradient(135deg, rgba(229, 9, 20, 0.10), rgba(255, 255, 255, 0.02));
 
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 10px 10px 0;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
 }
 
 .about-highlight span {
@@ -745,7 +847,7 @@ button {
 .about-highlight p {
     margin: 0;
 
-    color: #e5e5e5;
+    color: #f3f0ec;
 
     font-weight: 700;
 }
@@ -778,6 +880,7 @@ button {
 
     border-bottom:
         1px solid rgba(229, 9, 20, 0.12);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
 }
 
 .services .section-heading h2 {
@@ -814,7 +917,7 @@ button {
 
     padding: 35px 30px;
 
-    border-radius: 18px;
+    border-radius: 20px;
 
     border:
         1px solid rgba(255, 255, 255, 0.07);
@@ -822,7 +925,7 @@ button {
     transition: 0.3s;
 
     overflow: hidden;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 18px 35px rgba(0,0,0,0.12), 0 0 0 1px rgba(255,255,255,0.01);
 }
 
 .service-card::before {
@@ -856,7 +959,8 @@ button {
 
     box-shadow:
         0 22px 55px rgba(0, 0, 0, 0.48),
-        0 0 35px rgba(255, 45, 57, 0.08);
+        0 0 35px rgba(255, 45, 57, 0.08),
+        inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
 .service-card:hover::before {
@@ -868,7 +972,9 @@ button {
         1px solid rgba(229, 9, 20, 0.65);
 
     box-shadow:
-        0 0 35px rgba(229, 9, 20, 0.07);
+        0 0 35px rgba(229, 9, 20, 0.07),
+        inset 0 1px 0 rgba(255,255,255,0.06);
+    background: linear-gradient(145deg, rgba(34, 15, 17, 0.98), rgba(14, 12, 12, 0.96));
 }
 
 .featured-label {
@@ -928,11 +1034,12 @@ button {
 }
 
 .service-card > p {
-    color: #999999;
+    color: rgba(153, 153, 153, 0.96);
 
     font-size: 14px;
 
     margin-bottom: 25px;
+    line-height: 1.7;
 }
 
 .ideal {
@@ -1035,7 +1142,7 @@ button {
     border-radius: 16px;
 
     transition: 0.3s;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), 0 12px 24px rgba(0,0,0,0.12);
 }
 
 .advantage:hover {
@@ -1077,9 +1184,10 @@ button {
 }
 
 .advantage p {
-    color: #999999;
+    color: rgba(153, 153, 153, 0.96);
 
     font-size: 13px;
+    line-height: 1.7;
 }
 
 
@@ -1123,7 +1231,7 @@ button {
 }
 
 .period-content > p {
-    color: #999999;
+    color: rgba(153, 153, 153, 0.95);
 
     max-width: 700px;
 
@@ -1147,7 +1255,7 @@ button {
 
     border-radius: 30px;
 
-    background: #151515;
+    background: linear-gradient(180deg, rgba(21, 21, 21, 0.95), rgba(10, 10, 10, 0.95));
 
     color: #f0f0f0;
 
@@ -1159,6 +1267,7 @@ button {
         1px solid rgba(229, 9, 20, 0.30);
 
     transition: 0.3s;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
 }
 
 .periods span:hover {
@@ -1168,6 +1277,7 @@ button {
 
     border-color: rgba(255, 255, 255, 0.18);
     transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(229, 9, 20, 0.18);
 }
 
 .period-note {
@@ -1193,13 +1303,15 @@ button {
     background:
         linear-gradient(
             135deg,
-            #8d080f,
-            #d50913
+            #76080f,
+            #b50c18,
+            #f3212c
         );
 
     color: white;
 
     overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), 0 24px 60px rgba(229, 9, 20, 0.22);
 }
 
 .cta::before {
@@ -1274,13 +1386,13 @@ button {
 .btn-whatsapp {
     color: #ffffff;
 
-    background: #25d366;
+    background: linear-gradient(180deg, #2be070, #21c95d);
 
     border:
-        1px solid #25d366;
+        1px solid rgba(255, 255, 255, 0.2);
 
     box-shadow:
-        0 10px 30px rgba(37, 211, 102, 0.20);
+        0 10px 30px rgba(37, 211, 102, 0.28);
 
     transition: 0.3s ease;
 }
@@ -1363,13 +1475,13 @@ button {
 
     border-radius: 50%;
 
-    background: #25d366;
+    background: linear-gradient(180deg, #2ae66a, #20c55d);
 
     color: #ffffff;
 
     font-size: 27px;
 
-    border: 3px solid #0b0b0b;
+    border: 3px solid rgba(10, 10, 10, 0.9);
 
     box-shadow:
         0 8px 25px rgba(0, 0, 0, 0.45),
@@ -1393,6 +1505,14 @@ button {
         0 10px 30px rgba(0, 0, 0, 0.50),
         0 0 0 7px rgba(37, 211, 102, 0.15),
         0 0 45px rgba(37, 211, 102, 0.55);
+}
+
+.section-heading h2,
+.section-content h2,
+.period-content h2,
+.cta h2,
+.hero h1 {
+    text-wrap: balance;
 }
 
 .whatsapp::before {
@@ -1469,18 +1589,23 @@ button {
 
         width: 100%;
 
-        padding: 25px;
+        padding: 25px 20px 22px;
 
         display: none;
 
         flex-direction: column;
 
         align-items: flex-start;
-        gap: 20px;
+        gap: 18px;
 
         background: rgba(11, 11, 11, 0.98);
         border-bottom: 1px solid rgba(229, 9, 20, 0.2);
         box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .nav-links a {
+        width: 100%;
+        padding: 6px 0;
     }
 
     .nav-links.active {
@@ -1583,8 +1708,17 @@ button {
         padding: 15px 20px;
     }
 
-    .logo img {
-        width: 125px;
+    .logo {
+        gap: 6px;
+    }
+
+    .logo .brand-name {
+        font-size: 0.88rem;
+    }
+
+    .logo .brand-role {
+        letter-spacing: 0.12em;
+        font-size: 0.58rem;
     }
 
 
@@ -1593,14 +1727,20 @@ button {
     .hero {
         padding-left: 20px;
         padding-right: 20px;
+        padding-top: 120px;
+        gap: 34px;
     }
 
     .hero h1 {
-        font-size: 45px;
+        font-size: clamp(2.5rem, 10vw, 3.2rem);
+        letter-spacing: -1px;
+        margin-bottom: 18px;
     }
 
     .hero-description {
         font-size: 16px;
+        margin-bottom: 24px;
+        line-height: 1.7;
     }
 
 
@@ -1627,6 +1767,13 @@ button {
         padding: 80px 20px;
     }
 
+    .section-heading h2,
+    .section-content h2,
+    .period-content h2,
+    .cta h2 {
+        word-break: break-word;
+    }
+
 
     /* FOTO HERO */
 
@@ -1646,6 +1793,15 @@ button {
         height: 350px;
     }
 
+    .about-placeholder img {
+        width: 88%;
+        height: 88%;
+        left: 0;
+        top: 0;
+        object-fit: contain;
+        object-position: center center;
+    }
+
 
     /* ACOMPANHAMENTO */
 
@@ -1662,14 +1818,25 @@ button {
 
     .btn {
         width: 100%;
+        min-height: 52px;
     }
 
     .hero-buttons {
         flex-direction: column;
+        gap: 12px;
     }
 
-    .btn {
-        width: 100%;
+
+    /* PERÍODOS */
+
+    .periods {
+        gap: 8px;
+    }
+
+    .periods span {
+        flex: 1 1 calc(50% - 8px);
+        min-width: 0;
+        text-align: center;
     }
 
 
@@ -1698,5 +1865,74 @@ button {
         height: 56px;
 
         font-size: 24px;
+    }
+
+    .cta {
+        padding: 90px 20px;
+    }
+
+    .cta h2 {
+        font-size: clamp(2.2rem, 9vw, 3rem);
+    }
+
+    .service-card,
+    .advantage {
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 360px) {
+    .navbar {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .logo .brand-name {
+        font-size: 0.8rem;
+    }
+
+    .logo .brand-role {
+        font-size: 0.48rem;
+        letter-spacing: 0.1em;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .tag,
+    .section-tag {
+        font-size: 9px;
+        letter-spacing: 1.2px;
+    }
+}
+
+@media (max-width: 420px) {
+    .tag,
+    .section-tag {
+        letter-spacing: 1.1px;
+        font-size: 10px;
+    }
+
+    .hero {
+        gap: 40px;
+    }
+
+    .hero-content,
+    .section-content,
+    .section-heading,
+    .period-content,
+    .cta-content {
+        max-width: 100%;
+    }
+
+    .floating-card {
+        bottom: 20px;
+        left: 50%;
+        width: min(220px, calc(100% - 30px));
+    }
+
+    .service-card {
+        padding: 28px 20px;
     }
 }

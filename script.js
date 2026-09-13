@@ -1,4 +1,3 @@
-
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
@@ -11,7 +10,6 @@ if (menuBtn && navLinks) {
         menuBtn.setAttribute("aria-expanded", isOpen);
     });
 
-    // Fecha o menu ao clicar em um link
     navLinks.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", () => {
             navLinks.classList.remove("active");
@@ -19,7 +17,6 @@ if (menuBtn && navLinks) {
         });
     });
 
-    // Fecha o menu ao clicar fora
     document.addEventListener("click", (event) => {
         if (
             !navLinks.contains(event.target) &&
@@ -31,21 +28,11 @@ if (menuBtn && navLinks) {
     });
 }
 
-
-// =========================================
-// ANO AUTOMÁTICO NO FOOTER
-// =========================================
-
 const currentYear = document.getElementById("currentYear");
 
 if (currentYear) {
     currentYear.textContent = new Date().getFullYear();
 }
-
-
-// =========================================
-// HEADER AO ROLAR A PÁGINA
-// =========================================
 
 const header = document.querySelector("header");
 
@@ -58,11 +45,6 @@ if (header) {
         }
     });
 }
-
-
-// =========================================
-// ANIMAÇÃO DOS ELEMENTOS AO APARECEREM
-// =========================================
 
 const observer = new IntersectionObserver(
     (entries) => {
@@ -85,4 +67,3 @@ const animatedElements = document.querySelectorAll(
 animatedElements.forEach((element) => {
     observer.observe(element);
 });
-```
