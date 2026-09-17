@@ -822,6 +822,28 @@ button {
     margin-bottom: 8px;
 }
 
+.about-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 28px 0 32px;
+    padding: 18px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.about-cta p {
+    margin: 0;
+    color: var(--white);
+    font-weight: 700;
+}
+
+.about-cta .btn {
+    flex-shrink: 0;
+}
+
 .about-method {
     padding: 22px 24px;
     margin-top: 28px;
@@ -1129,6 +1151,30 @@ button {
     transform: translateX(4px);
 }
 
+.section-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin: 55px auto 0;
+    padding: 22px 26px;
+    max-width: 760px;
+    border: 1px solid rgba(229, 9, 20, 0.24);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.section-cta p {
+    margin: 0;
+    color: var(--white);
+    font-weight: 700;
+    text-align: center;
+}
+
+.section-cta .btn {
+    flex-shrink: 0;
+}
+
 
 /* =========================================
    ACOMPANHAMENTO
@@ -1144,6 +1190,10 @@ button {
     grid-template-columns: repeat(2, 1fr);
 
     gap: 18px;
+}
+
+.follow-up-cta {
+    margin-top: 45px;
 }
 
 .advantage {
@@ -1260,6 +1310,10 @@ button {
     max-width: 700px;
 
     margin: 0 auto 30px;
+}
+
+.period-cta {
+    margin-top: 14px;
 }
 
 .periods {
@@ -1848,6 +1902,20 @@ button {
     .hero-buttons {
         flex-direction: column;
         gap: 12px;
+    }
+
+    .about-cta,
+    .section-cta {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .about-cta p,
+    .section-cta p {
+        text-align: center;
     }
 
 
