@@ -1,48 +1,52 @@
-# 🥗 Portfólio — Victor Benevides
+# 🥗 Victor Benevides — Site Profissional
 
-> Site profissional desenvolvido para apresentação dos serviços e informações do nutricionista **Victor Benevides**, com foco em **Nutrição Esportiva e Estética**.
+Site profissional desenvolvido para **Victor Benevides**, nutricionista especializado em Nutrição Esportiva, Obesidade e Emagrecimento.
+
+O projeto foi desenvolvido com foco em **apresentação profissional, experiência mobile e conversão de visitantes em contatos**, funcionando também como página principal para divulgação através do Instagram.
 
 ---
 
-## 📋 Sobre o projeto
+## 🌐 Sobre o projeto
 
-O **projetoBene** é um portfólio web desenvolvido para ser utilizado como página de apresentação profissional e como link principal na bio do Instagram.
+O **Projeto Bene** é uma landing page responsiva criada para apresentar o trabalho, os serviços e a proposta profissional do nutricionista Victor Benevides.
 
-A proposta é oferecer uma experiência moderna, objetiva e responsiva, permitindo que visitantes conheçam o profissional, seus serviços e entrem em contato de forma rápida.
+A página possui uma navegação simples e objetiva, permitindo que o visitante conheça o profissional, seus serviços e entre em contato diretamente pelo WhatsApp.
 
-### 👨‍⚕️ Profissional
+### 🎯 Principais objetivos
 
-**Victor Benevides**
-Nutrição Esportiva & Estética
-**CRN 11-23163**
-
-> "De acordo com o seu objetivo."
+* Apresentar o profissional de forma moderna e profissional
+* Divulgar os serviços oferecidos
+* Facilitar o contato com potenciais clientes
+* Criar uma página otimizada para acesso pelo Instagram
+* Aplicar conhecimentos de desenvolvimento web em um projeto real
 
 ---
 
 ## ✨ Funcionalidades
 
-* 🏠 Página inicial com apresentação profissional
-* 👨‍⚕️ Seção sobre o nutricionista
+* 🏠 Seção inicial com apresentação profissional
+* 👨‍⚕️ Seção "Sobre"
 * 🥗 Apresentação dos serviços
-* 🎯 Conteúdo direcionado para nutrição esportiva e estética
+* 🎯 Informações sobre áreas de atuação
 * 📱 Layout responsivo para dispositivos móveis
-* 📸 Utilização de imagens para identidade visual
-* 💬 Botão de contato direto pelo WhatsApp
-* 🔗 Navegação entre as seções da página
-* 🎨 Design moderno com identidade visual voltada ao segmento esportivo
+* 💬 Botões de contato direto pelo WhatsApp
+* 🔗 Navegação entre as seções
+* 📸 Imagens e elementos de identidade visual
+* 📲 Menu adaptado para dispositivos móveis
+* 🎨 Interface moderna com identidade visual voltada ao segmento esportivo
 
 ---
 
 ## 🛠️ Tecnologias utilizadas
 
-| Tecnologia     | Utilização                                      |
-| -------------- | ----------------------------------------------- |
-| **HTML5**      | Estrutura da página                             |
-| **CSS3**       | Estilização, responsividade e identidade visual |
-| **JavaScript** | Interações e funcionalidades                    |
-| **Git**        | Controle de versão                              |
-| **GitHub**     | Hospedagem e versionamento do projeto           |
+| Tecnologia | Utilização                              |
+| ---------- | --------------------------------------- |
+| HTML5      | Estrutura e organização da página       |
+| CSS3       | Estilização, layout e responsividade    |
+| JavaScript | Interações e funcionalidades            |
+| Git        | Controle de versão                      |
+| GitHub     | Versionamento e gerenciamento do código |
+| Netlify    | Deploy e publicação do projeto          |
 
 ---
 
@@ -52,7 +56,8 @@ Nutrição Esportiva & Estética
 projetoBene/
 │
 ├── img/
-│   └── imagens do projeto
+│   ├── logo-victor.png
+│   └── victor.jpg
 │
 ├── index.html
 ├── style.css
@@ -62,77 +67,67 @@ projetoBene/
 
 ---
 
-## 🎨 Proposta visual
-
-O projeto foi desenvolvido buscando transmitir:
-
-* ⚡ Energia
-* 💪 Performance
-* 🎯 Objetividade
-* 🧠 Profissionalismo
-* 🥗 Saúde e bem-estar
-
-A identidade visual foi pensada para conectar o posicionamento profissional do nutricionista com o universo esportivo e estético.
-
----
-
 ## 📱 Responsividade
 
-O site foi desenvolvido pensando principalmente na experiência de usuários que acessam o portfólio através do celular, especialmente pelo link disponibilizado na bio do Instagram.
+O projeto foi desenvolvido com foco especial na experiência em **dispositivos móveis**, considerando que o principal acesso ao site acontece através do link disponibilizado na bio do Instagram.
 
-O layout se adapta a diferentes tamanhos de tela, mantendo a navegação simples e o conteúdo organizado.
+O layout utiliza técnicas de responsividade para adaptar a interface a diferentes tamanhos de tela, mantendo a navegação e as informações organizadas.
 
 ---
 
-## 🚀 Como executar o projeto
+## 🚀 Execução local
 
-Clone o repositório:
+### 1. Clone o repositório
 
 ```bash
 git clone https://github.com/SamirMaia91/projetoBene.git
 ```
 
-Entre na pasta:
+### 2. Entre na pasta
 
 ```bash
 cd projetoBene
 ```
 
-Depois, basta abrir o arquivo:
+### 3. Execute o projeto
 
-```text
-index.html
-```
-
-ou utilizar a extensão **Live Server** no VS Code para executar o projeto localmente.
+Você pode abrir o arquivo `index.html` diretamente no navegador ou utilizar a extensão **Live Server** no VS Code.
 
 ---
 
-## 📌 Objetivo do projeto
+## 🌍 Deploy
 
-Este projeto foi desenvolvido como uma aplicação prática de desenvolvimento web, colocando em prática conhecimentos de:
+O projeto foi publicado utilizando **Netlify**, permitindo que o site seja acessado através de uma URL pública e utilizado como página profissional para divulgação.
 
-* Estruturação com HTML5
-* Estilização com CSS3
+---
+
+## 💡 Aprendizados aplicados
+
+Durante o desenvolvimento foram colocados em prática conhecimentos de:
+
+* Desenvolvimento Front-end
+* HTML semântico
+* CSS e responsividade
 * JavaScript
-* Responsividade
-* Organização de arquivos
+* Manipulação do DOM
+* Organização de projetos web
 * Git e GitHub
-* Desenvolvimento de interfaces para dispositivos móveis
-* Criação de páginas profissionais para divulgação online
+* Deploy de aplicações web
+* Desenvolvimento orientado a um projeto real
+* Criação de interfaces voltadas para dispositivos móveis
 
 ---
 
 ## 👨‍💻 Desenvolvedor
 
-Desenvolvido por **Samir Maia**.
+**Samir Maia**
 
-Estudante de **Análise e Desenvolvimento de Sistemas (ADS)**, com interesse em desenvolvimento web, programação, cloud computing e tecnologias voltadas para desenvolvimento de software.
+Estudante de **Análise e Desenvolvimento de Sistemas (ADS)**, com interesse em desenvolvimento de software, desenvolvimento web, programação e cloud computing.
 
 ---
 
 ## 📄 Licença
 
-Este projeto foi desenvolvido para fins de apresentação e portfólio.
+Projeto desenvolvido para fins de apresentação profissional e portfólio.
 
 © 2026 — Victor Benevides
